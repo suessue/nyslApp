@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "app-equipo-de-futbol",
+    "app1": "app-equipo-de-futbol"
+  }
+}

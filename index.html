@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="shortcut icon" sizes="196x196" href="img/nysl_logo.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>NYSL GAME SCHEDULE</title>
+</head>
+
+<body data-spy="scroll" data-target="#list-example">
+	<div id="app">
+
+		<div id="NYSL-HOME" v-if="show == 'home'">
+<!--			<img id="bg-home" src="img/bg_editada.png" class="img-fluid">-->
+			<div class="container">
+				<div class="first-block row align-items-start pos-f-t bg-success fixed-top">
+					<div class="col">
+						<div class="collapse" id="navbarToggleExternalContent">
+							<div class="p-4">
+								<ul class="nav flex-column">
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('home')" href="#">
+											<h5>
+												HOME
+											</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link " v-on:click="display('games')" href="#">
+											<h5>ALL GAMES</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('byteam')" href="#">
+											<h5>GAMES BY
+												TEAM</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('locations')" href="#">
+											<h5>LOCATIONS</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('login')" href="#">
+											<h5>SIGN IN/REGISTER</h5>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<nav class="navbar navbar-toggler bg-success fixed-top row">
+							<button class="navbar-toggler col 1" type="button" data-toggle="collapse"
+								data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+								aria-expanded="false" aria-label="Toggle navigation" width="50" height="50">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="col-7 text-center">
+								<h3>NYSL SCHEDULE</h3>
+							</div>
+							<div class="col-2 mr-3">
+								<img id="nav-logo" src="img/nysl_logo.png" width="50" height="50"
+									class="d-inline align-right" alt="NYSL logo">
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="row second-block align-items-center">
+
+				</div>
+				<div class="row third-block align-items-end navbar navbar-light bg-success fixed-bottom">
+					<nav class="nav">
+						<ul class="nav nav-pills flex-row ">
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('home')" href="#">
+									<h5>
+										HOME
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('games')" href="#">
+									<h5>
+										GAMES
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link" v-on:click="display('login')" href="#">
+									<h5>REGISTER</h5>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div id="ALL-GAMES" v-if="show == 'games'">
+			<div class="container">
+				<div class="first-block row align-items-start pos-f-t bg-success fixed-top">
+					<div class="col">
+						<div class="collapse" id="navbarToggleExternalContent">
+							<div class="p-4">
+								<ul class="nav flex-column">
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('home')" href="#">
+											<h5>
+												HOME
+											</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link " v-on:click="display('games')" href="#">
+											<h5>ALL GAMES</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('byteam')" href="#">
+											<h5>GAMES BY
+												TEAM</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('locations')" href="#">
+											<h5>LOCATIONS</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('login')" href="#">
+											<h5>SIGN IN/REGISTER</h5>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<nav class="navbar navbar-dark bg-success fixed-top row">
+							<button class="navbar-toggler col 1" type="button" data-toggle="collapse"
+								data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+								aria-expanded="false" aria-label="Toggle navigation" width="50" height="50">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="col-7 text-center">
+								<h3>NYSL SCHEDULE</h3>
+							</div>
+							<div class="col-2 mr-3">
+								<img id="nav-logo" src="img/nysl_logo.png" width="50" height="50"
+									class="d-inline align-right" alt="NYSL logo">
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="second-block row justify-content-center">
+					<div id="accordion" class="col md-col-9">
+						<h3 id="team-reference"><em>ALL GAMES</em></h3>
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<h5 class="mb-0">
+									<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+										aria-expanded="true" aria-controls="collapseOne">
+										SEPTEMBER
+									</button>
+								</h5>
+							</div>
+							<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+								data-parent="#accordion">
+								<div class="row card-body justify-content-center">
+									<div class="col-5 scrollspy-example">
+										<div class="list-group" v-for="game in games.september">
+											<a class="list-group-item" :href="'#list-item' + game.Id">
+												Game {{game.Id}}: {{game.Teams}}</a>
+										</div>
+									</div>
+									<div class="col-7">
+										<div data-spy="scroll" data-target="#list-example" data-offset="0"
+											class="scrollspy-example">
+											<div v-for="game in games.september" :id="'list-item'+ game.Id">
+												<div class="game-boxes">
+													<h4><em>Game {{game.Id}}</em> - {{game.Teams}}</h4>
+													<p><em>Location:</em> {{game.Location}}</p>
+													<p><em>Time:</em> {{game.Times}}</p>
+													<p><em>Details:</em> {{game.Address}}</p>
+													<div class="row justify-content-center">
+														<iframe class="map-frame responsive col-9" :src="game.Details"
+															style="border-color:lawngreen;"></iframe>
+														<div v-if="userLoggedIn">
+															<button class="btn btn-success btn-sm"
+																v-on:click="updateShow(game.Id)">
+																Join Game
+																{{game.Id}} Live Chat </button>
+														</div>
+														<div v-else>
+															<button class="btn btn-success btn-sm"
+																v-on:click="display('login')">
+																Login to access the Chat!
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" id="headingTwo">
+								<h5 class="mb-0">
+									<button class="btn btn-link collapsed" data-toggle="collapse"
+										data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										OCTOBER
+									</button>
+								</h5>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+								data-parent="#accordion">
+								<div class="row card-body justify-content-center">
+									<div class="col-5 scrollspy-example">
+										<div class="list-group" v-for="game in games.october">
+											<a class="list-group-item" :href="'#list-item' + game.Id">
+												Game {{game.Id}}: {{game.Teams}}</a>
+										</div>
+									</div>
+									<div class="col-7">
+										<div data-spy="scroll" data-target="#list-example" data-offset="0"
+											class="scrollspy-example">
+											<div v-for="game in games.october" :id="'list-item'+ game.Id">
+												<div class="game-boxes">
+													<h4><em>Game {{game.Id}}</em> - {{game.Teams}}</h4>
+													<p><em>Location:</em> {{game.Location}}</p>
+													<p><em>Time:</em> {{game.Times}}</p>
+													<p><em>Details:</em> {{game.Address}}</p>
+													<div class="row justify-content-center">
+														<iframe class="map-frame responsive col-9" :src="game.Details"
+															style="border-color:lawngreen;"></iframe>
+														<div v-if="userLoggedIn">
+															<button class="btn btn-success btn-sm"
+																v-on:click="updateShow(game.Id)">
+																Join Game
+																{{game.Id}} Live Chat </button>
+														</div>
+														<div v-else>
+															<button class="btn btn-success btn-sm"
+																v-on:click="display('login')">
+																Login to access the Chat!
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row third-block align-items-end navbar navbar-light bg-success fixed-bottom">
+					<nav class="nav">
+						<ul class="nav nav-pills flex-row ">
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('home')" href="#">
+									<h5>
+										HOME
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('games')" href="#">
+									<h5>
+										GAMES
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link" v-on:click="display('login')" href="#">
+									<h5>REGISTER</h5>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div id="CHAT" v-if="show == 'chat'">
+			<div class="first-block row align-items-start pos-f-t bg-success fixed-top">
+				<div class="col">
+					<div class="collapse" id="navbarToggleExternalContent">
+						<div class="p-4">
+							<ul class="nav flex-column">
+								<li class="nav-item">
+									<a class="nav-link" v-on:click="display('home')" href="#">
+										<h5>
+											HOME
+										</h5>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" v-on:click="display('games')" href="#">
+										<h5>ALL GAMES</h5>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" v-on:click="display('byteam')" href="#">
+										<h5>GAMES BY
+											TEAM</h5>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" v-on:click="display('locations')" href="#">
+										<h5>LOCATIONS</h5>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" v-on:click="display('login')" href="#">
+										<h5>SIGN IN/REGISTER</h5>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<nav class="navbar navbar-dark bg-success fixed-top row">
+						<button class="navbar-toggler col 1" type="button" data-toggle="collapse"
+							data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+							aria-expanded="false" aria-label="Toggle navigation" width="50" height="50">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="col-7 text-center">
+							<h3>NYSL SCHEDULE</h3>
+						</div>
+						<div class="col-2 mr-3">
+							<img id="nav-logo" src="img/nysl_logo.png" width="50" height="50"
+								class="d-inline align-right" alt="NYSL logo">
+						</div>
+					</nav>
+				</div>
+			</div>
+			<div class="row second-block justify-content-center">
+				<div class="col-10">
+					<h3><em> Welcome to Game {{chatId}} Live Chat!</em></h3>
+					<div class="row chat-scroll">
+						<div class="msj-rta macro col-9" style="margin:auto">
+							<ul>
+								<li v-for="m in mensajes">
+									<div v-if="m.game == chatId" class="alert alert-success" role="alert">
+										<p class="alert-heading">{{m.email}} says:</p>
+										<p><em>{{m.texto}}</em></p>
+										<hr>
+										<p> at {{m.time}}</p>
+									</div>
+								</li>
+							</ul>
+							<div class="text text-r" style="background:whitesmoke !important">
+								<label>Message:</label>
+								<input type="text" v-model:value="mensaje">
+								<button type="button" class="btn btn-sm btn-success"
+									v-on:click="send(chatId)">Enviar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row third-block align-items-end navbar navbar-light bg-success fixed-bottom">
+				<nav class="nav">
+					<ul class="nav nav-pills flex-row ">
+						<li class="nav-item">
+							<a class="flex-sm text-center nav-link " v-on:click="display('home')" href="#">
+								<h5>
+									HOME
+								</h5>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="flex-sm text-center nav-link " v-on:click="display('games')" href="#">
+								<h5>
+									GAMES
+								</h5>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="flex-sm text-center nav-link" v-on:click="display('login')" href="#">
+								<h5>REGISTER</h5>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<div id="ALL-LOCATIONS" v-if="show == 'locations'">
+			<div class="container ">
+				<div class="first-block row align-items-start pos-f-t bg-success fixed-top">
+					<div class="col">
+						<div class="collapse" id="navbarToggleExternalContent">
+							<div class="p-4">
+								<ul class="nav flex-column">
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('home')" href="#">
+											<h5>
+												HOME
+											</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('games')" href="#">
+											<h5>ALL GAMES</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('byteam')" href="#">
+											<h5>GAMES BY
+												TEAM</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('locations')" href="#">
+											<h5>LOCATIONS</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('login')" href="#">
+											<h5>SIGN IN/REGISTER</h5>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<nav class="navbar navbar-dark bg-success fixed-top row">
+							<button class="navbar-toggler col 1" type="button" data-toggle="collapse"
+								data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+								aria-expanded="false" aria-label="Toggle navigation" width="50" height="50">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="col-7 text-center">
+								<h3>NYSL SCHEDULE</h3>
+							</div>
+							<div class="col-2 mr-3">
+								<img id="nav-logo" src="img/nysl_logo.png" width="50" height="50"
+									class="d-inline align-right" alt="NYSL logo">
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="row second-block justify-content-center">
+					<div id="accordion" class="col-9">
+						<h3 id="reference"><em>LOCATION INFO</em></h3>
+						<div class="card row" v-for="venue in locationList">
+							<div class="card-header" :id="'heading' + venue.LocId">
+								<h5 class="mb-0">
+									<button class="btn btn-link" data-toggle="collapse" :data-target="'#'+ venue.LocId"
+										aria-expanded="true" :aria-controls="'collapse'+ venue.LocId">
+										{{venue.Location}}
+									</button>
+								</h5>
+							</div>
+							<div :id="venue.LocId" class="collapse" :aria-labelledby="'heading' + venue.LocId"
+								data-parent="#accordion">
+								<div class="row card-body">
+									<div class="col-12">
+										<p><em>{{venue.Address}}</em></p>
+										<iframe class="map-frame responsive" :src="venue.Details"
+											style="border-color:lawngreen;"></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row third-block align-items-end navbar navbar-light bg-success fixed-bottom">
+					<nav class="nav">
+						<ul class="nav nav-pills flex-row ">
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('home')" href="#">
+									<h5>
+										HOME
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('games')" href="#">
+									<h5>
+										GAMES
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link" v-on:click="display('login')" href="#">
+									<h5>REGISTER</h5>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div id="GAMES BY TEAM" v-if="show == 'byteam'">
+			<div class="container">
+				<div class="first-block row align-items-start pos-f-t bg-success fixed-top">
+					<div class="col">
+						<div class="collapse" id="navbarToggleExternalContent">
+							<div class="p-4">
+								<ul class="nav flex-column">
+									<li class="nav-item">
+										<a class="nav-link active" v-on:click="display('home')" href="#">
+											<h5>
+												HOME
+											</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('games')" href="#">
+											<h5>ALL GAMES</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('byteam')" href="#">
+											<h5>GAMES BY
+												TEAM</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('locations')" href="#">
+											<h5>LOCATIONS</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('login')" href="#">
+											<h5>SIGN IN/REGISTER</h5>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<nav class="navbar navbar-dark bg-success fixed-top row">
+							<button class="navbar-toggler col 1" type="button" data-toggle="collapse"
+								data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+								aria-expanded="false" aria-label="Toggle navigation" width="50" height="50">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="col-7 text-center">
+								<h3>NYSL SCHEDULE</h3>
+							</div>
+							<div class="col-2 mr-3">
+								<img id="nav-logo" src="img/nysl_logo.png" width="50" height="50"
+									class="d-inline align-right" alt="NYSL logo">
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="row second-block justify-content-center">
+					<form name="filter" id="FilterForm" action="">
+						<div class="form-group">
+							<label for="team-dropdown" class="alert alert-success" name="team">Choose
+								your
+								team</label>
+							<select v-on:change="filterTeam" id="team-dropdown" name="team" v-model="selectedTeam">
+								<option v-for="team in teams" name="team"> {{team}} </option>
+							</select>
+						</div>
+					</form>
+					<div class="col-10">
+						<div id="games-filtered-by-team justify-content-center">
+							<div class="row">
+								<h4 v-if="selectedTeam != ''"><em> Games for {{ selectedTeam}}</em></h4>
+								<div class="row card-body justify-content-center">
+									<div class="col-5 scrollspy-example">
+										<div class="list-group" v-for="game in filteredGames">
+											<a class="list-group-item" :href="'#list-item' + game.Id">
+												Game {{game.Id}}: {{game.Teams}}</a>
+										</div>
+									</div>
+									<div class="col-7">
+										<div data-spy="scroll" data-target="#list-example" data-offset="0"
+											class="scrollspy-example">
+											<div v-for="game in filteredGames" :id="'list-item'+ game.Id">
+												<div class="game-boxes">
+													<h4><em>Game {{game.Id}}</em> - {{game.Teams}}</h4>
+													<p><em>Location:</em> {{game.Location}}</p>
+													<p><em>Time:</em> {{game.Times}}</p>
+													<p><em>Details:</em> {{game.Address}}</p>
+													<div class="row justify-content-center">
+														<iframe class="map-frame responsive col-9" :src="game.Details"
+															style="border-color:lawngreen;"></iframe>
+														<div v-if="userLoggedIn">
+															<button class="btn btn-success btn-sm"
+																v-on:click="updateShow(game.Id)">
+																Join Game
+																{{game.Id}} Live Chat </button>
+														</div>
+														<div v-else>
+															<button class="btn btn-success btn-sm"
+																v-on:click="display('login')">
+																Sign in to access the Chat!
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row third-block align-items-end navbar navbar-light bg-success fixed-bottom">
+					<nav class="nav">
+						<ul class="nav nav-pills flex-row ">
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('home')" href="#">
+									<h5>
+										HOME
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link " v-on:click="display('games')" href="#">
+									<h5>
+										GAMES
+									</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="flex-sm text-center nav-link" v-on:click="display('login')" href="#">
+									<h5>REGISTER</h5>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div id="LOGIN" v-if="show == 'login'">
+			<div class="container">
+				<div class="first-block row align-items-start pos-f-t bg-success fixed-top">
+					<div class="col">
+						<div class="collapse" id="navbarToggleExternalContent">
+							<div class="p-4">
+								<ul class="nav flex-column">
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('home')" href="#">
+											<h5>
+												HOME
+											</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('games')" href="#">
+											<h5>ALL GAMES</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('byteam')" href="#">
+											<h5>GAMES BY
+												TEAM</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('locations')" href="#">
+											<h5>LOCATIONS</h5>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" v-on:click="display('login')" href="#">
+											<h5>SIGN IN/REGISTER</h5>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<nav class="navbar navbar-dark bg-success fixed-top row">
+							<button class="navbar-toggler col 1" type="button" data-toggle="collapse"
+								data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+								aria-expanded="false" aria-label="Toggle navigation" width="50" height="50">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="col-7 text-center">
+								<h3>NYSL SCHEDULE</h3>
+							</div>
+							<div class="col-2 mr-3">
+								<img id="nav-logo" src="img/nysl_logo.png" width="50" height="50"
+									class="d-inline align-right" alt="NYSL logo">
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="row second-block justify-content-center">
+					<div class="col-11">
+						<div class="row justify-content-center">
+							<div class="col-9">
+								<div class="row justify-content-center">
+									<h4>
+										<em>Enter your e-mail:</em>
+									</h4>
+								</div>
+							</div>
+							<form>
+								<div class="row form-group justify-content-center">
+									<label for="exampleInputEmail1" class="row"><em>Email address:</em></label>
+									<input type="email" class="form-control row" id="exampleInputEmail1"
+										aria-describedby="emailHelp" v-model:value="userEmail">
+								</div>
+								<div class="row form-group justify-content-center">
+									<label for="exampleInputPassword1" class="row"><em>Password:</em></label>
+									<input type="password" class="form-control row" id="exampleInputPassword1"
+										v-model:value="userPassword">
+								</div>
+							</form>
+						</div>
+						<div class="row justify-content-center">
+							<button type="button" class=" btn btn-success btn-md row" v-on:click="register">
+								Register!</button>
+						</div>
+					</div>
+					<div class="row justify-content-center google">
+						<div class="col-9">
+							<h5>
+								<div class="row justify-content-center"><em>Or use your Google Account</em></div>
+							</h5>
+							<button type="button" class="btn btn-outline btn-success btn-md row"
+								v-on:click="loginGoogle">
+								Here!</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="row third-block align-items-end navbar navbar-light bg-success fixed-bottom">
+				<nav class="nav">
+					<ul class="nav nav-pills flex-row ">
+						<li class="nav-item">
+							<a class="flex-sm text-center nav-link " v-on:click="display('home')" href="#">
+								<h5>
+									HOME
+								</h5>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="flex-sm text-center nav-link " v-on:click="display('games')" href="#">
+								<h5>
+									GAMES
+								</h5>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="flex-sm text-center nav-link" v-on:click="display('login')" href="#">
+								<h5>REGISTER</h5>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+
+	</div>
+
+
+	<!-- SCRIPTS - START -->
+
+
+
+
+
+	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyC_Nv-sosJ-K8QPnNH8ztb22QLZoQp42JE",
+			authDomain: "app-equipo-de-futbol.firebaseapp.com",
+			databaseURL: "https://app-equipo-de-futbol.firebaseio.com",
+			projectId: "app-equipo-de-futbol",
+			storageBucket: "app-equipo-de-futbol.appspot.com",
+			messagingSenderId: "35179098034",
+			appId: "1:35179098034:web:28e2647ccad8d9e5963eab",
+			measurementId: "G-Z80RP3MEZY"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<script src="main.js"></script>
+
+	<!-- SCRIPTS - END -->
+
+</body>
+
+</html>

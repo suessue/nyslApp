@@ -1,0 +1,9 @@
+{
+  "rules": {
+    ".read": true,
+    "$noteid": {
+      ".write": "auth != null",
+      ".validate": "newData.hasChild('texto')"
+    }
+  }
+}
